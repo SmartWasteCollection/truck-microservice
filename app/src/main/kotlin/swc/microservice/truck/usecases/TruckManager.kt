@@ -39,5 +39,4 @@ object TruckDigitalTwinManager {
 
     fun getTruckDigitalTwinModel() = client.getModel(MODEL_ID)
 
-
 }

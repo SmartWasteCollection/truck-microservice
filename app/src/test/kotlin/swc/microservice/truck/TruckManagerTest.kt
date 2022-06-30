@@ -3,12 +3,15 @@
  */
 package swc.microservice.truck
 
-import kotlin.test.Test
-import kotlin.test.assertNotNull
+import io.kotest.core.spec.style.FreeSpec
 
-class AppTest {
-    @Test fun appHasAGreeting() {
-        val classUnderTest = App()
-        assertNotNull(classUnderTest.greeting, "app should have a greeting")
+class TruckManagerTest : FreeSpec({
+
+    "The truck manager" - {
+        "when communicating with Azure Digital Twins" - {
+            "should fetch a model" {
+
+            }
+        }
     }
-}
+})
