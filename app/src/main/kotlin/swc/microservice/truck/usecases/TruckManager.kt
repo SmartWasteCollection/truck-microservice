@@ -24,19 +24,13 @@ object TruckDigitalTwinManager {
         .endpoint("https://test-instance.api.wcus.digitaltwins.azure.net/")
         .buildClient()
 
-    private val twin: String = Files.readAllLines(
-        TruckDigitalTwinManager::class
-            .java
-            .getResource(EMPTY_TRUCK_MODEL)
-            ?.toURI()
-            ?.let { File(it) }
-            ?.toPath()
-    ).stream().collect(Collectors.joining())
+    private val twin: String = this::class.java.classLoader
+        .getResource(EMPTY_TRUCK_MODEL)?.readText() ?: EMPTY_TRUCK_MODEL
 
     fun createTruckDigitalTwin() {
         val t = client.createOrReplaceDigitalTwin("0", twin, String.javaClass)
     }
 
-    fun getTruckDigitalTwinModel() = client.getModel(MODEL_ID)
+    fun getTruckDigitalTwinModel(): String = client.getModel(MODEL_ID).dtdlModel
 
 }
