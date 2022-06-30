@@ -28,7 +28,8 @@ object TruckDigitalTwinManager {
         .getResource(EMPTY_TRUCK_MODEL)?.readText() ?: EMPTY_TRUCK_MODEL
 
     fun createTruckDigitalTwin() {
-        val t = client.createOrReplaceDigitalTwin("0", twin, String.javaClass)
+
+        client.createOrReplaceDigitalTwin("0", twin, String.javaClass)
     }
 
     fun getTruckDigitalTwinModel(): String = client.getModel(MODEL_ID).dtdlModel

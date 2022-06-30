@@ -25,6 +25,9 @@ class TruckManagerTest : FreeSpec({
 
                 TruckDigitalTwinManager.getTruckDigitalTwinModel() shouldBe model
             }
+            "should create a digital twin" {
+                TruckDigitalTwinManager.createTruckDigitalTwin()
+            }
         }
     }
 })
