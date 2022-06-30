@@ -35,7 +35,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
       - name: AZ Login
         run: |
-          apt-get install azure-cli
+          sudo apt-get install azure-cli
           az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
       - name: Build
         run: ./gradlew build
