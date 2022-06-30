@@ -36,9 +36,6 @@ jobs:
       - name: AZ Login
         uses: azure/login@v1
         with:
-          allow-no-subscriptions: true
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Build
         run: ./gradlew build --full-stacktrace
