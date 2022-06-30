@@ -8,7 +8,7 @@
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.5.31"
+    id("org.jetbrains.kotlin.jvm") version "1.7.0"
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
@@ -27,8 +27,6 @@ dependencies {
     implementation("com.google.guava:guava:30.1.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.2.3")
     implementation("com.azure:azure-identity:1.5.2")
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
     testImplementation("io.kotest:kotest-property:$kotestVersion")
@@ -37,4 +35,8 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass.set("swc.microservice.truck.AppKt")
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }

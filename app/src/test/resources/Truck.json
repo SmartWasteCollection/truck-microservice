@@ -1,0 +1,41 @@
+{
+  "@id": "dtmi:swc:Truck;1",
+  "@type": "Interface",
+  "displayName": "Truck",
+  "@context": ["dtmi:dtdl:context;2"],
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Position",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "Longitude",
+            "schema": "long"
+          },
+          {
+            "name": "Latitude",
+            "schema": "long"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "OccupiedVolume",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "Capacity",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "InMission",
+      "schema": "boolean"
+    }
+  ]
+}
+
