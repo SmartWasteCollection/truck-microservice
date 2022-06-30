@@ -38,4 +38,4 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Build
-        run: ./gradlew build --full-stacktrace
+        run: ./gradlew build
