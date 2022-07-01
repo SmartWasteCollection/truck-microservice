@@ -2,7 +2,7 @@
   "@id": "dtmi:swc:Truck;1",
   "@type": "Interface",
   "displayName": "Truck",
-  "@context": "dtmi:dtdl:context;2",
+  "@context": ["dtmi:dtdl:context;2"],
   "contents": [
     {
       "@type": "Property",
@@ -29,7 +29,15 @@
     {
       "@type": "Property",
       "name": "occupiedVolume",
-      "schema": "double"
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "value",
+            "schema": "double"
+          }
+        ]
+      }
     },
     {
       "@type": "Property",
