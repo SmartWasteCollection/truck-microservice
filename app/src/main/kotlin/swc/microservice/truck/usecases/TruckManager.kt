@@ -3,17 +3,11 @@ package swc.microservice.truck.usecases
 import com.azure.digitaltwins.core.DigitalTwinsClient
 import com.azure.digitaltwins.core.DigitalTwinsClientBuilder
 import com.azure.identity.AzureCliCredentialBuilder
-import com.beust.klaxon.Json
-import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Klaxon
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.toJsonString
 import swc.microservice.truck.usecases.TruckDigitalTwinManager.Values.DT_QUERY
-import swc.microservice.truck.usecases.TruckDigitalTwinManager.Values.EMPTY_TRUCK_MODEL
 import swc.microservice.truck.usecases.TruckDigitalTwinManager.Values.MODEL_ID
-import java.io.File
-import java.nio.file.Files
-import java.util.stream.Collectors
 
 fun getAllTrucks(): List<Truck> = TODO()
 
