@@ -2,20 +2,25 @@
   "@id": "dtmi:swc:Truck;1",
   "@type": "Interface",
   "displayName": "Truck",
-  "@context": ["dtmi:dtdl:context;2"],
+  "@context": "dtmi:dtdl:context;2",
   "contents": [
     {
       "@type": "Property",
-      "name": "Position",
+      "name": "truckId",
+      "schema": "string"
+    },
+    {
+      "@type": "Property",
+      "name": "position",
       "schema": {
         "@type": "Object",
         "fields": [
           {
-            "name": "Longitude",
+            "name": "longitude",
             "schema": "long"
           },
           {
-            "name": "Latitude",
+            "name": "latitude",
             "schema": "long"
           }
         ]
@@ -23,19 +28,18 @@
     },
     {
       "@type": "Property",
-      "name": "OccupiedVolume",
+      "name": "occupiedVolume",
       "schema": "double"
     },
     {
       "@type": "Property",
-      "name": "Capacity",
+      "name": "capacity",
       "schema": "double"
     },
     {
       "@type": "Property",
-      "name": "InMission",
+      "name": "inMission",
       "schema": "boolean"
     }
   ]
 }
-
