@@ -11,4 +11,8 @@ data class Truck(
     val isInMission: Boolean = false
 )
 
-fun Truck.toJsonString(): String = Klaxon().toJsonObject(this).put("\$metadata", JsonObject(mapOf(Pair("\$model", this.truckId)))).toString()
+fun Truck.toJsonString(): String {
+    val json = Klaxon().toJsonObject(this)
+    json["\$metadata"] = JsonObject(mapOf(Pair("\$model", "dtmi:swc:Truck;1")))
+    return json.toJsonString()
+}

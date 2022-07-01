@@ -28,7 +28,9 @@ object TruckDigitalTwinManager {
     fun getTruckId(): String = "Truck${getTruckCount()}"
 
     fun createTruckDigitalTwin(truck: Truck) {
-        client.createOrReplaceDigitalTwin(truck.truckId, truck.toJsonString(), String::class.java)
+        val json = truck.toJsonString()
+        print(json)
+        client.createOrReplaceDigitalTwin(truck.truckId, json, String::class.java)
     }
 
     fun readTruckDigitalTwin(id: String): Truck? =
