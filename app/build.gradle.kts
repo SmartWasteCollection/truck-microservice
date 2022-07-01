@@ -27,6 +27,7 @@ dependencies {
     implementation("com.google.guava:guava:30.1.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.2.3")
     implementation("com.azure:azure-identity:1.5.2")
+    implementation("com.beust:klaxon:5.5")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
     testImplementation("io.kotest:kotest-property:$kotestVersion")
