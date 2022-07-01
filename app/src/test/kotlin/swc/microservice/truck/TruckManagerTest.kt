@@ -5,6 +5,7 @@ import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import swc.microservice.truck.Values.MODEL
+import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.usecases.TruckDigitalTwinManager
 import java.io.File
 import java.nio.file.Files
@@ -25,8 +26,16 @@ class TruckManagerTest : FreeSpec({
 
                 TruckDigitalTwinManager.getTruckDigitalTwinModel() shouldBe model
             }
-            "should create a digital twin" {
-                TruckDigitalTwinManager.createTruckDigitalTwin()
+            "should find the right id" {
+                val count = TruckDigitalTwinManager.getTruckCount()
+                TruckDigitalTwinManager.getTruckId() shouldBe "Truck${count}"
+            }
+            "should create and read a digital twin" {
+                val truck = Truck(TruckDigitalTwinManager.getTruckId())
+                println(truck)
+                TruckDigitalTwinManager.createTruckDigitalTwin(truck)
+                println("creato")
+                TruckDigitalTwinManager.readTruckDigitalTwin(truck.truckId) shouldBe truck
             }
         }
     }
