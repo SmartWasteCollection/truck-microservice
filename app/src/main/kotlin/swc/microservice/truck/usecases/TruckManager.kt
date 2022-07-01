@@ -21,7 +21,6 @@ object TruckDigitalTwinManager {
 
     object Values {
         const val MODEL_ID = "dtmi:swc:Truck;1"
-        const val EMPTY_TRUCK_MODEL = "EmptyTruck.json"
         const val DT_QUERY = "SELECT COUNT() FROM digitaltwins WHERE \$metadata.\$model = 'dtmi:swc:Truck;1'"
     }
 
