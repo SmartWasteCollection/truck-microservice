@@ -39,6 +39,7 @@ object TruckManager {
         //client.updateDigitalTwin(id, )
     }
 
-    fun getTruckDigitalTwinModel(): String = client.getModel(MODEL_ID).dtdlModel
+    fun getTruckDigitalTwinModel(): String =
+        client.getModel(MODEL_ID).dtdlModel
 
 }
