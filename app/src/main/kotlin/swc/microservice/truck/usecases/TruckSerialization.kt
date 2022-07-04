@@ -43,11 +43,9 @@ object TruckSerialization {
          * Produces a [JsonPatchDocument] that updates a serialized [Truck].
          */
         fun <T> patch(elem: T): JsonPatchDocument = when (elem) {
-            is Position -> JsonPatchDocument().appendReplace(POSITION,
-                json(Pair(LATITUDE, elem.latitude), Pair(LONGITUDE, elem.longitude)))
-            is Volume -> JsonPatchDocument().appendReplace(OCCUPIED_VOLUME,
-                json(Pair(VALUE, elem.value)))
-            is Boolean -> JsonPatchDocument().appendReplace(IN_MISSION, valueOf(elem))
+            is Position -> JsonPatchDocument().appendReplace("/$POSITION", elem)
+            is Volume -> JsonPatchDocument().appendReplace("/$OCCUPIED_VOLUME", elem)
+            is Boolean -> JsonPatchDocument().appendReplace("/$IN_MISSION", elem)
             else -> JsonPatchDocument()
         }
 
