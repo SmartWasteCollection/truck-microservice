@@ -103,6 +103,11 @@ class TruckUseCasesTest : FreeSpec({
                 UpdateTruck(id3, AvailabilityUpdateEvent(newMission)).execute(manager)
                 GetAvailableTrucks().execute(manager).size shouldBe 2
             }
+            "delete a truck" {
+                val truckCount = TruckCount().execute(manager)
+                DeleteTruck(id1).execute(manager)
+                TruckCount().execute(manager) shouldBe (truckCount - 1)
+            }
         }
     }
 })
