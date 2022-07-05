@@ -1,8 +1,7 @@
-package swc.microservice.truck.usecases.queries
+package swc.microservice.truck.usecases
 
 import swc.microservice.truck.entities.Truck
-import swc.microservice.truck.usecases.TruckManager
 
-class GetAvailableTrucks : TruckQuery<List<Truck>> {
+class GetAvailableTrucks : TruckUseCase<List<Truck>> {
     override fun execute(manager: TruckManager): List<Truck> = manager.getAllTrucks().filter { !it.isInMission }
 }
