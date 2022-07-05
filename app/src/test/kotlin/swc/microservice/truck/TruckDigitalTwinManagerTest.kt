@@ -12,10 +12,10 @@ import swc.microservice.truck.Values.NEW_POSITION
 import swc.microservice.truck.Values.NEW_VOLUME
 import swc.microservice.truck.Values.TRUCK_ID
 import swc.microservice.truck.Values.manager
+import swc.microservice.truck.drivers.TruckDigitalTwinManager
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume
-import swc.microservice.truck.drivers.TruckDigitalTwinManager
 
 object Values {
     const val MODEL = "Truck.json"
@@ -71,6 +71,18 @@ class TruckManagerTest : FreeSpec({
                 }
                 e.response.statusCode shouldBe ERROR_STATUS_CODE
             }
+            "should read digital twins" {
+                manager.createTruck(Truck(TRUCK_ID))
+
+                waitSomeTime()
+                manager.getAllTrucks().size shouldBeGreaterThan 0
+
+                manager.deleteTruck(TRUCK_ID)
+            }
         }
     }
 })
+
+fun waitSomeTime() {
+    Thread.sleep(1_000)
+}
