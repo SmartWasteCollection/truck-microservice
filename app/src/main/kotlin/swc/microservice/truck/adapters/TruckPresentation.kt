@@ -1,4 +1,4 @@
-package swc.microservice.truck.usecases
+package swc.microservice.truck.adapters
 
 import com.azure.core.models.JsonPatchDocument
 import com.google.gson.Gson
@@ -7,17 +7,17 @@ import com.google.gson.JsonSyntaxException
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume
-import swc.microservice.truck.usecases.TruckPresentation.Values.CAPACITY
-import swc.microservice.truck.usecases.TruckPresentation.Values.IN_MISSION
-import swc.microservice.truck.usecases.TruckPresentation.Values.LATITUDE
-import swc.microservice.truck.usecases.TruckPresentation.Values.LONGITUDE
-import swc.microservice.truck.usecases.TruckPresentation.Values.METADATA
-import swc.microservice.truck.usecases.TruckPresentation.Values.MODEL
-import swc.microservice.truck.usecases.TruckPresentation.Values.OCCUPIED_VOLUME
-import swc.microservice.truck.usecases.TruckPresentation.Values.POSITION
-import swc.microservice.truck.usecases.TruckPresentation.Values.TRUCK_ID
-import swc.microservice.truck.usecases.TruckPresentation.Values.TRUCK_MODEL
-import swc.microservice.truck.usecases.TruckPresentation.Values.VALUE
+import swc.microservice.truck.adapters.TruckPresentation.Values.CAPACITY
+import swc.microservice.truck.adapters.TruckPresentation.Values.IN_MISSION
+import swc.microservice.truck.adapters.TruckPresentation.Values.LATITUDE
+import swc.microservice.truck.adapters.TruckPresentation.Values.LONGITUDE
+import swc.microservice.truck.adapters.TruckPresentation.Values.METADATA
+import swc.microservice.truck.adapters.TruckPresentation.Values.MODEL
+import swc.microservice.truck.adapters.TruckPresentation.Values.OCCUPIED_VOLUME
+import swc.microservice.truck.adapters.TruckPresentation.Values.POSITION
+import swc.microservice.truck.adapters.TruckPresentation.Values.TRUCK_ID
+import swc.microservice.truck.adapters.TruckPresentation.Values.TRUCK_MODEL
+import swc.microservice.truck.adapters.TruckPresentation.Values.VALUE
 
 object TruckPresentation {
 
