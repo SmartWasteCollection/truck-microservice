@@ -39,8 +39,9 @@ class TruckDigitalTwinManager : TruckManager {
     /**
      * Creates a digital twin of the specified [Truck].
      */
-    override fun createTruck(truck: Truck): String =
+    override fun createTruck(truck: Truck) {
         client.createOrReplaceDigitalTwin(truck.truckId, truck.toJsonString(), String::class.java)
+    }
 
     /**
      * Gets the digital twin of the [Truck] with the specified id.

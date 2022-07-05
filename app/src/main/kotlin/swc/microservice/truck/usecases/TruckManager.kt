@@ -8,7 +8,7 @@ interface TruckManager {
 
     fun getTruckCount(): Int
 
-    fun createTruck(truck: Truck): String
+    fun createTruck(truck: Truck)
 
     fun getTruck(id: String): Truck
 
