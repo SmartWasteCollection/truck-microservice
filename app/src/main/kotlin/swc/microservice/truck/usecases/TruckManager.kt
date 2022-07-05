@@ -10,7 +10,7 @@ interface TruckManager {
 
     fun createTruck(truck: Truck)
 
-    fun getTruck(id: String): Truck
+    fun getTruck(id: String): Truck?
 
     fun deleteTruck(id: String)
 
