@@ -7,4 +7,3 @@ data class Truck(
     val capacity: Double = 100.0,
     val isInMission: Boolean = false
 )
-

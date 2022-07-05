@@ -90,6 +90,4 @@ class TruckDigitalTwinManager : TruckManager {
      */
     fun getTruckDigitalTwinModel(): String =
         client.getModel(TRUCK_MODEL_ID).dtdlModel
-
 }
-

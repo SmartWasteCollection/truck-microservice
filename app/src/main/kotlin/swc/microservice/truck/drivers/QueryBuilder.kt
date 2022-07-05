@@ -1,9 +1,9 @@
 package swc.microservice.truck.drivers
 
-import swc.microservice.truck.drivers.QueryBuilder.QueryElements.SELECT
 import swc.microservice.truck.drivers.QueryBuilder.QueryElements.ALL
 import swc.microservice.truck.drivers.QueryBuilder.QueryElements.COUNT
 import swc.microservice.truck.drivers.QueryBuilder.QueryElements.FROM_DIGITAL_TWINS
+import swc.microservice.truck.drivers.QueryBuilder.QueryElements.SELECT
 import swc.microservice.truck.drivers.QueryBuilder.QueryElements.WHERE
 
 class QueryBuilder(val string: String = "") {

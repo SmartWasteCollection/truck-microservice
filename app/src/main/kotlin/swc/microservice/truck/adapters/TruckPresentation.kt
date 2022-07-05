@@ -4,9 +4,6 @@ import com.azure.core.models.JsonPatchDocument
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonSyntaxException
-import swc.microservice.truck.entities.Position
-import swc.microservice.truck.entities.Truck
-import swc.microservice.truck.entities.Volume
 import swc.microservice.truck.adapters.TruckPresentation.Values.CAPACITY
 import swc.microservice.truck.adapters.TruckPresentation.Values.IN_MISSION
 import swc.microservice.truck.adapters.TruckPresentation.Values.LATITUDE
@@ -18,6 +15,9 @@ import swc.microservice.truck.adapters.TruckPresentation.Values.POSITION
 import swc.microservice.truck.adapters.TruckPresentation.Values.TRUCK_ID
 import swc.microservice.truck.adapters.TruckPresentation.Values.TRUCK_MODEL
 import swc.microservice.truck.adapters.TruckPresentation.Values.VALUE
+import swc.microservice.truck.entities.Position
+import swc.microservice.truck.entities.Truck
+import swc.microservice.truck.entities.Volume
 
 object TruckPresentation {
 
@@ -63,8 +63,8 @@ object TruckPresentation {
          * Allows to convert a map of elements (represented by [Pair]s) into a Json String.
          */
         private fun <T> json(vararg pairs: Pair<String, T>): String = "{ ${
-            pairs.map { "\"${it.first}\": ${it.second.toString()}" }
-                .reduce { acc, s -> "$acc, $s" }
+        pairs.map { "\"${it.first}\": ${it.second}" }
+            .reduce { acc, s -> "$acc, $s" }
         } }"
     }
 
