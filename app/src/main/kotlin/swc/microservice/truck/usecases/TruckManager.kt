@@ -1,6 +1,5 @@
 package swc.microservice.truck.usecases
 
-import com.azure.core.models.JsonPatchDocument
 import com.azure.digitaltwins.core.DigitalTwinsClient
 import com.azure.digitaltwins.core.DigitalTwinsClientBuilder
 import com.azure.identity.AzureCliCredentialBuilder
