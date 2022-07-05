@@ -1,17 +1,16 @@
-package swc.microservice.truck
+package swc.microservice.truck.drivers
 
 import com.azure.digitaltwins.core.implementation.models.ErrorResponseException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
-import swc.microservice.truck.Values.ERROR_STATUS_CODE
-import swc.microservice.truck.Values.MODEL
-import swc.microservice.truck.Values.NEW_MISSION
-import swc.microservice.truck.Values.NEW_POSITION
-import swc.microservice.truck.Values.NEW_VOLUME
-import swc.microservice.truck.Values.manager
-import swc.microservice.truck.drivers.TruckDigitalTwinManager
+import swc.microservice.truck.drivers.Values.ERROR_STATUS_CODE
+import swc.microservice.truck.drivers.Values.MODEL
+import swc.microservice.truck.drivers.Values.NEW_MISSION
+import swc.microservice.truck.drivers.Values.NEW_POSITION
+import swc.microservice.truck.drivers.Values.NEW_VOLUME
+import swc.microservice.truck.drivers.Values.manager
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume
