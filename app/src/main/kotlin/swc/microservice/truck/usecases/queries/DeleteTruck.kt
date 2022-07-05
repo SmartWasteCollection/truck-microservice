@@ -1,4 +1,9 @@
 package swc.microservice.truck.usecases.queries
 
-class DeleteTruck {
+import swc.microservice.truck.usecases.TruckManager
+
+class DeleteTruck(private val truckId: String) : TruckQuery<Unit> {
+    override fun execute(manager: TruckManager) {
+        manager.deleteTruck(truckId)
+    }
 }
