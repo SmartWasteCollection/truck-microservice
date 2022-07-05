@@ -1,3 +1,6 @@
 package swc.microservice.truck.entities.events
 
-class AvailabilityUpdateEvent(override val newValue: Boolean) : TruckEvent<Boolean>
+/**
+ * [TruckUpdateEvent] generated when a truck's availability is updated.
+ */
+class AvailabilityUpdateEvent(override val newValue: Boolean) : TruckUpdateEvent<Boolean>(newValue)
