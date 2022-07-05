@@ -16,7 +16,7 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.google.code.gson:gson:2.9.0")
-    implementation("com.google.guava:guava:30.1.1-jre")
+    implementation("com.google.guava:guava:31.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.2.3")
     implementation("com.azure:azure-identity:1.5.2")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
