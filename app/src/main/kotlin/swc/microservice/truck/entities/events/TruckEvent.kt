@@ -1,3 +1,5 @@
 package swc.microservice.truck.entities.events
 
-interface TruckEvent
+interface TruckEvent<T> {
+    val newValue: T
+}
