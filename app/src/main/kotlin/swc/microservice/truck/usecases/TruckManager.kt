@@ -8,8 +8,6 @@ interface TruckManager {
 
     fun getTruckCount(): Int
 
-    fun getTruckNextId(): String
-
     fun createTruck(truck: Truck): String
 
     fun getTruck(id: String): Truck
@@ -22,5 +20,5 @@ interface TruckManager {
 
     fun updateTruckInMission(id: String, inMission: Boolean)
 
-    fun getAvailableTrucks(): List<Truck>
+    fun getAllTrucks(): List<Truck>
 }
