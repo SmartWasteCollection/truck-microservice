@@ -64,21 +64,9 @@ object TruckSerialization {
          * Allows to convert a map of elements (represented by [Pair]s) into a Json String.
          */
         private fun <T> json(vararg pairs: Pair<String, T>): String = "{ ${
-            pairs.map { "\"${it.first}\": ${valueOf(it.second)}" }
+            pairs.map { "\"${it.first}\": ${it.second.toString()}" }
                 .reduce { acc, s -> "$acc, $s" }
         } }"
-
-        /**
-         * Converts a generic element into its corresponding Json representation value.
-         */
-        private fun <T> valueOf(elem: T): String = when (elem) {
-            is String -> elem
-            is Boolean -> when (elem) {
-                true -> "true"
-                else -> "false"
-            }
-            else -> elem.toString()
-        }
 
         /**
          * Quotes a string.
