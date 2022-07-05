@@ -1,4 +1,7 @@
 package swc.microservice.truck.usecases.queries
 
-interface TruckQuery {
+import swc.microservice.truck.usecases.TruckManager
+
+interface TruckQuery<T> {
+    fun execute(manager: TruckManager): T
 }

@@ -1,3 +1,8 @@
 package swc.microservice.truck.usecases.queries
 
-data class TruckCount()
+import swc.microservice.truck.usecases.TruckManager
+
+class TruckCount : TruckQuery<Int> {
+
+    override fun execute(manager: TruckManager): Int = manager.getTruckCount()
+}
