@@ -1,12 +1,11 @@
-package swc.microservice.truck.usecases.queries
+package swc.microservice.truck.usecases
 
 import swc.microservice.truck.entities.events.AvailabilityUpdateEvent
 import swc.microservice.truck.entities.events.OccupiedVolumeUpdateEvent
 import swc.microservice.truck.entities.events.PositionUpdateEvent
 import swc.microservice.truck.entities.events.TruckUpdateEvent
-import swc.microservice.truck.usecases.TruckManager
 
-class UpdateTruck<T>(private val truckId: String, private val event: TruckUpdateEvent<T>) : TruckQuery<Unit> {
+class UpdateTruck<T>(private val truckId: String, private val event: TruckUpdateEvent<T>) : TruckUseCase<Unit> {
     override fun execute(manager: TruckManager) {
         when (event) {
             is PositionUpdateEvent -> manager.updateTruckPosition(truckId, event.newValue)
