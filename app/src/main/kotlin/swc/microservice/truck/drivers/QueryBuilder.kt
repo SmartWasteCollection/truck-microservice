@@ -17,9 +17,9 @@ class QueryBuilder(val string: String = "") {
         const val EQUALS = "="
     }
 
-    fun selectAll(): QueryBuilder = QueryBuilder("$string $SELECT $ALL $FROM_DIGITAL_TWINS")
+    fun selectAll(): QueryBuilder = QueryBuilder("$SELECT $ALL $FROM_DIGITAL_TWINS")
 
-    fun selectCount(): QueryBuilder = QueryBuilder("$string $SELECT $COUNT $FROM_DIGITAL_TWINS")
+    fun selectCount(): QueryBuilder = QueryBuilder("$SELECT $COUNT $FROM_DIGITAL_TWINS")
 
     fun where(element: String, operation: String, value: String): QueryBuilder = QueryBuilder("$string $WHERE $element $operation $value")
 
