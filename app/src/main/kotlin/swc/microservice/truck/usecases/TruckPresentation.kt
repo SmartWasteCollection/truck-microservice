@@ -7,19 +7,19 @@ import com.google.gson.JsonSyntaxException
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume
-import swc.microservice.truck.usecases.TruckSerialization.Values.CAPACITY
-import swc.microservice.truck.usecases.TruckSerialization.Values.IN_MISSION
-import swc.microservice.truck.usecases.TruckSerialization.Values.LATITUDE
-import swc.microservice.truck.usecases.TruckSerialization.Values.LONGITUDE
-import swc.microservice.truck.usecases.TruckSerialization.Values.METADATA
-import swc.microservice.truck.usecases.TruckSerialization.Values.MODEL
-import swc.microservice.truck.usecases.TruckSerialization.Values.OCCUPIED_VOLUME
-import swc.microservice.truck.usecases.TruckSerialization.Values.POSITION
-import swc.microservice.truck.usecases.TruckSerialization.Values.TRUCK_ID
-import swc.microservice.truck.usecases.TruckSerialization.Values.TRUCK_MODEL
-import swc.microservice.truck.usecases.TruckSerialization.Values.VALUE
+import swc.microservice.truck.usecases.TruckPresentation.Values.CAPACITY
+import swc.microservice.truck.usecases.TruckPresentation.Values.IN_MISSION
+import swc.microservice.truck.usecases.TruckPresentation.Values.LATITUDE
+import swc.microservice.truck.usecases.TruckPresentation.Values.LONGITUDE
+import swc.microservice.truck.usecases.TruckPresentation.Values.METADATA
+import swc.microservice.truck.usecases.TruckPresentation.Values.MODEL
+import swc.microservice.truck.usecases.TruckPresentation.Values.OCCUPIED_VOLUME
+import swc.microservice.truck.usecases.TruckPresentation.Values.POSITION
+import swc.microservice.truck.usecases.TruckPresentation.Values.TRUCK_ID
+import swc.microservice.truck.usecases.TruckPresentation.Values.TRUCK_MODEL
+import swc.microservice.truck.usecases.TruckPresentation.Values.VALUE
 
-object TruckSerialization {
+object TruckPresentation {
 
     private object Values {
 
