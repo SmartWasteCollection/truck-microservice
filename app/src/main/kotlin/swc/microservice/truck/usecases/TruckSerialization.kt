@@ -7,18 +7,17 @@ import com.google.gson.JsonSyntaxException
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume
-import swc.microservice.truck.usecases.TruckSerialization.Serialization.toJsonString
-import swc.microservice.truck.usecases.TruckSerialization.Values.METADATA
-import swc.microservice.truck.usecases.TruckSerialization.Values.MODEL
-import swc.microservice.truck.usecases.TruckSerialization.Values.TRUCK_MODEL
-import swc.microservice.truck.usecases.TruckSerialization.Values.TRUCK_ID
-import swc.microservice.truck.usecases.TruckSerialization.Values.POSITION
-import swc.microservice.truck.usecases.TruckSerialization.Values.LATITUDE
-import swc.microservice.truck.usecases.TruckSerialization.Values.LONGITUDE
-import swc.microservice.truck.usecases.TruckSerialization.Values.OCCUPIED_VOLUME
-import swc.microservice.truck.usecases.TruckSerialization.Values.VALUE
 import swc.microservice.truck.usecases.TruckSerialization.Values.CAPACITY
 import swc.microservice.truck.usecases.TruckSerialization.Values.IN_MISSION
+import swc.microservice.truck.usecases.TruckSerialization.Values.LATITUDE
+import swc.microservice.truck.usecases.TruckSerialization.Values.LONGITUDE
+import swc.microservice.truck.usecases.TruckSerialization.Values.METADATA
+import swc.microservice.truck.usecases.TruckSerialization.Values.MODEL
+import swc.microservice.truck.usecases.TruckSerialization.Values.OCCUPIED_VOLUME
+import swc.microservice.truck.usecases.TruckSerialization.Values.POSITION
+import swc.microservice.truck.usecases.TruckSerialization.Values.TRUCK_ID
+import swc.microservice.truck.usecases.TruckSerialization.Values.TRUCK_MODEL
+import swc.microservice.truck.usecases.TruckSerialization.Values.VALUE
 
 object TruckSerialization {
 
@@ -53,7 +52,7 @@ object TruckSerialization {
          * Converts a [Truck] into a Json String.
          */
         fun Truck.toJsonString(): String = json(
-            Pair(METADATA, json(Pair(MODEL, quoted(TRUCK_MODEL)))),
+            Pair(METADATA, json(Pair(MODEL, "\"$TRUCK_MODEL\""))),
             Pair(POSITION, json(Pair(LATITUDE, this.position.latitude), Pair(LONGITUDE, this.position.longitude))),
             Pair(OCCUPIED_VOLUME, json(Pair(VALUE, this.occupiedVolume.value))),
             Pair(CAPACITY, this.capacity),
@@ -67,12 +66,6 @@ object TruckSerialization {
             pairs.map { "\"${it.first}\": ${it.second.toString()}" }
                 .reduce { acc, s -> "$acc, $s" }
         } }"
-
-        /**
-         * Quotes a string.
-         */
-        private fun quoted(s: String): String = "\"$s\""
-
     }
 
     object Deserialization {
