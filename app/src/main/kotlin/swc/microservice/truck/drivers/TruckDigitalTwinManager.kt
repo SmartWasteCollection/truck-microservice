@@ -11,10 +11,11 @@ import swc.microservice.truck.drivers.TruckDigitalTwinManager.Values.DT_QUERY
 import swc.microservice.truck.drivers.TruckDigitalTwinManager.Values.ENDPOINT
 import swc.microservice.truck.drivers.TruckDigitalTwinManager.Values.MODEL_ID
 import swc.microservice.truck.adapters.TruckPresentation.Deserialization.deserialize
+import swc.microservice.truck.adapters.TruckPresentation.Deserialization.toJsonObject
 import swc.microservice.truck.adapters.TruckPresentation.Serialization.patch
 import swc.microservice.truck.usecases.TruckManager
 
-object TruckDigitalTwinManager : TruckManager {
+class TruckDigitalTwinManager : TruckManager {
 
     object Values {
         const val MODEL_ID: String = "dtmi:swc:Truck;1"
@@ -31,7 +32,8 @@ object TruckDigitalTwinManager : TruckManager {
      * Counts how many [Truck] digital twin are deployed.
      */
     override fun getTruckCount(): Int =
-        client.query(DT_QUERY, String::class.java).count()
+        client.query(DT_QUERY, String::class.java)
+            .map { it.toString().toJsonObject() }[0]["COUNT"].asInt
 
 
     /**
@@ -71,6 +73,9 @@ object TruckDigitalTwinManager : TruckManager {
     override fun updateTruckInMission(id: String, inMission: Boolean) =
         client.updateDigitalTwin(id, patch(inMission))
 
+    /**
+     * Gets all the deployed [Truck]s in the digital twin instance.
+     */
     override fun getAllTrucks(): List<Truck> {
         TODO("Not yet implemented")
     }
@@ -82,3 +87,4 @@ object TruckDigitalTwinManager : TruckManager {
         client.getModel(MODEL_ID).dtdlModel
 
 }
+
