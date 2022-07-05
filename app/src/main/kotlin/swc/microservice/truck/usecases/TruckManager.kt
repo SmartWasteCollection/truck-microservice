@@ -7,12 +7,12 @@ import com.azure.identity.AzureCliCredentialBuilder
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume
-import swc.microservice.truck.usecases.TruckSerialization.Serialization.toJsonString
+import swc.microservice.truck.usecases.TruckPresentation.Serialization.toJsonString
 import swc.microservice.truck.usecases.TruckManager.Values.DT_QUERY
 import swc.microservice.truck.usecases.TruckManager.Values.ENDPOINT
 import swc.microservice.truck.usecases.TruckManager.Values.MODEL_ID
-import swc.microservice.truck.usecases.TruckSerialization.Deserialization.deserialize
-import swc.microservice.truck.usecases.TruckSerialization.Serialization.patch
+import swc.microservice.truck.usecases.TruckPresentation.Deserialization.deserialize
+import swc.microservice.truck.usecases.TruckPresentation.Serialization.patch
 
 object TruckManager {
 
