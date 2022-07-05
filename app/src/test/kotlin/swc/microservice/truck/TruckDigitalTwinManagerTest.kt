@@ -10,7 +10,6 @@ import swc.microservice.truck.Values.MODEL
 import swc.microservice.truck.Values.NEW_MISSION
 import swc.microservice.truck.Values.NEW_POSITION
 import swc.microservice.truck.Values.NEW_VOLUME
-import swc.microservice.truck.Values.TRUCK_ID
 import swc.microservice.truck.Values.manager
 import swc.microservice.truck.drivers.TruckDigitalTwinManager
 import swc.microservice.truck.entities.Position
@@ -19,17 +18,17 @@ import swc.microservice.truck.entities.Volume
 
 object Values {
     const val MODEL = "Truck.json"
-    const val TRUCK_ID = "TruckTest"
     const val ERROR_STATUS_CODE = 404
 
     val NEW_POSITION = Position(100L, 100L)
     val NEW_VOLUME = Volume(100.0)
-    val NEW_MISSION = true
+    const val NEW_MISSION = true
 
     val manager: TruckDigitalTwinManager = TruckDigitalTwinManager()
 }
 
 class TruckManagerTest : FreeSpec({
+    val id = "TruckTest${System.currentTimeMillis()}"
 
     "The truck manager" - {
         "when communicating with Azure Digital Twins" - {
@@ -45,21 +44,21 @@ class TruckManagerTest : FreeSpec({
                 manager.getTruckCount() shouldBeGreaterThan -1
             }
             "should create a digital twin" {
-                val truck = Truck(TRUCK_ID)
+                val truck = Truck(id)
                 manager.createTruck(truck)
                 manager.getTruck(truck.truckId) shouldBe truck
             }
             "should update a digital twin" {
-                val truck = manager.getTruck(TRUCK_ID)
-                truck.position shouldBe Truck(TRUCK_ID).position
-                truck.occupiedVolume shouldBe Truck(TRUCK_ID).occupiedVolume
-                truck.isInMission shouldBe Truck(TRUCK_ID).isInMission
+                val truck = manager.getTruck(id)
+                truck.position shouldBe Truck(id).position
+                truck.occupiedVolume shouldBe Truck(id).occupiedVolume
+                truck.isInMission shouldBe Truck(id).isInMission
 
-                manager.updateTruckPosition(TRUCK_ID, NEW_POSITION)
-                manager.updateTruckOccupiedVolume(TRUCK_ID, NEW_VOLUME)
-                manager.updateTruckInMission(TRUCK_ID, NEW_MISSION)
+                manager.updateTruckPosition(id, NEW_POSITION)
+                manager.updateTruckOccupiedVolume(id, NEW_VOLUME)
+                manager.updateTruckInMission(id, NEW_MISSION)
 
-                val newTruck = manager.getTruck(TRUCK_ID)
+                val newTruck = manager.getTruck(id)
                 newTruck.position shouldBe NEW_POSITION
                 newTruck.occupiedVolume shouldBe NEW_VOLUME
                 newTruck.isInMission shouldBe NEW_MISSION
@@ -69,9 +68,9 @@ class TruckManagerTest : FreeSpec({
                 manager.getAllTrucks().size shouldBeGreaterThan 0
             }
             "should delete a digital twin" {
-                manager.deleteTruck(TRUCK_ID)
+                manager.deleteTruck(id)
                 val e = shouldThrow<ErrorResponseException> {
-                    manager.getTruck(TRUCK_ID)
+                    manager.getTruck(id)
                 }
                 e.response.statusCode shouldBe ERROR_STATUS_CODE
             }
