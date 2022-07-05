@@ -64,20 +64,16 @@ class TruckManagerTest : FreeSpec({
                 newTruck.occupiedVolume shouldBe NEW_VOLUME
                 newTruck.isInMission shouldBe NEW_MISSION
             }
+            "should read digital twins" {
+                waitSomeTime()
+                manager.getAllTrucks().size shouldBeGreaterThan 0
+            }
             "should delete a digital twin" {
                 manager.deleteTruck(TRUCK_ID)
                 val e = shouldThrow<ErrorResponseException> {
                     manager.getTruck(TRUCK_ID)
                 }
                 e.response.statusCode shouldBe ERROR_STATUS_CODE
-            }
-            "should read digital twins" {
-                manager.createTruck(Truck(TRUCK_ID))
-
-                waitSomeTime()
-                manager.getAllTrucks().size shouldBeGreaterThan 0
-
-                manager.deleteTruck(TRUCK_ID)
             }
         }
     }
