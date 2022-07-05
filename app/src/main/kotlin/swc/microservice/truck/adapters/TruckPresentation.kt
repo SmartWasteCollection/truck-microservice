@@ -74,14 +74,14 @@ object TruckPresentation {
          * Deserializes a Json into a Truck object.
          */
         fun deserialize(json: String): Truck {
-            val obj = json.obj()
+            val obj = json.toJsonObject()
             return Truck(
                 truckId = obj[TRUCK_ID].asString,
                 position = Position(
-                    obj[POSITION].obj().get(LATITUDE).asLong,
-                    obj[POSITION].obj().get(LONGITUDE).asLong
+                    obj[POSITION].toJsonObject().get(LATITUDE).asLong,
+                    obj[POSITION].toJsonObject().get(LONGITUDE).asLong
                 ),
-                occupiedVolume = Volume(obj[OCCUPIED_VOLUME].obj().get(VALUE).asDouble),
+                occupiedVolume = Volume(obj[OCCUPIED_VOLUME].toJsonObject().get(VALUE).asDouble),
                 capacity = obj[CAPACITY].asDouble,
                 isInMission = obj[IN_MISSION].asBoolean
             )
@@ -91,7 +91,7 @@ object TruckPresentation {
          * Converts [Any]thing into a [JsonObject]. Throws a [JsonSyntaxException] if the parsed object is not a valid json.
          */
         @kotlin.jvm.Throws(JsonSyntaxException::class)
-        private fun Any.obj(): JsonObject =
+        fun Any.toJsonObject(): JsonObject =
             Gson().fromJson(this.toString(), JsonObject::class.java)
     }
 }
