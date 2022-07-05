@@ -1,4 +1,3 @@
 package swc.microservice.truck.entities.events
 
-class AvailabilityUpdateEvent : TruckEvent {
-}
+class AvailabilityUpdateEvent(override val newValue: Boolean) : TruckEvent<Boolean>

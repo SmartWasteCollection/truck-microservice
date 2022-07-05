@@ -1,4 +1,5 @@
 package swc.microservice.truck.entities.events
 
-class VolumeUpdateEvent : TruckEvent {
-}
+import swc.microservice.truck.entities.Volume
+
+class VolumeUpdateEvent(override val newValue: Volume) : TruckEvent<Volume>
