@@ -10,6 +10,7 @@ import swc.microservice.truck.drivers.Values.NEW_MISSION
 import swc.microservice.truck.drivers.Values.NEW_POSITION
 import swc.microservice.truck.drivers.Values.NEW_VOLUME
 import swc.microservice.truck.drivers.Values.manager
+import swc.microservice.truck.drivers.digitaltwins.TruckDigitalTwinManager
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume

@@ -1,10 +1,10 @@
-package swc.microservice.truck.drivers
+package swc.microservice.truck.drivers.digitaltwins
 
-import swc.microservice.truck.drivers.QueryBuilder.QueryElements.ALL
-import swc.microservice.truck.drivers.QueryBuilder.QueryElements.COUNT
-import swc.microservice.truck.drivers.QueryBuilder.QueryElements.FROM_DIGITAL_TWINS
-import swc.microservice.truck.drivers.QueryBuilder.QueryElements.SELECT
-import swc.microservice.truck.drivers.QueryBuilder.QueryElements.WHERE
+import swc.microservice.truck.drivers.digitaltwins.QueryBuilder.QueryElements.ALL
+import swc.microservice.truck.drivers.digitaltwins.QueryBuilder.QueryElements.COUNT
+import swc.microservice.truck.drivers.digitaltwins.QueryBuilder.QueryElements.FROM_DIGITAL_TWINS
+import swc.microservice.truck.drivers.digitaltwins.QueryBuilder.QueryElements.SELECT
+import swc.microservice.truck.drivers.digitaltwins.QueryBuilder.QueryElements.WHERE
 
 class QueryBuilder(val string: String = "") {
 
