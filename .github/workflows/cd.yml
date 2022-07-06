@@ -1,0 +1,42 @@
+name: Delivery and Deployment
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'CHANGELOG.md'
+      - 'LICENSE'
+      - 'README.md'
+
+jobs:
+  build-and-test:
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+  delivery:
+    needs:
+      - build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Semantic Versioning
+        uses: anitvam/conventionalcommit-semantic-releasing@v0.3.6
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Get tag
+        id: getTag
+        run: echo "::set-output name=tagVersion::$(git describe --tags --abbrev=0)"
+      - name: Container Registry Authentication
+        run: |
+          export CR_PAT=${{ secrets.GH_TOKEN }}
+          echo $CR_PAT | docker login ghcr.io -u SmartWasteCollection --password-stdin
+      - name: Build Docker Image
+        run: docker build -t truck-microservice .
+      - name: Push Docker Image
+        run: docker push ghcr.io/swc/truck-microservice:${{ steps.getTag.outputs.tagVersion }}
