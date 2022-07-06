@@ -73,10 +73,10 @@ object TruckPresentation {
         /**
          * Deserializes a Json into a Truck object.
          */
-        fun deserialize(json: String): Truck {
+        fun deserialize(json: String, truckId: String?): Truck {
             val obj = json.toJsonObject()
             return Truck(
-                truckId = obj[TRUCK_ID].asString,
+                truckId = truckId ?: obj[TRUCK_ID].asString,
                 position = Position(
                     obj[POSITION].toJsonObject().get(LATITUDE).asLong,
                     obj[POSITION].toJsonObject().get(LONGITUDE).asLong

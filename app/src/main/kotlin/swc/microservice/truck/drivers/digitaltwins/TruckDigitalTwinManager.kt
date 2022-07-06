@@ -48,7 +48,7 @@ class TruckDigitalTwinManager : TruckManager {
      * Gets the digital twin of the [Truck] with the specified id.
      */
     override fun getTruck(id: String): Truck? = try {
-        deserialize(client.getDigitalTwin(id, String::class.java))
+        deserialize(client.getDigitalTwin(id, String::class.java), null)
     } catch (e: Exception) {
         println(e)
         null
@@ -96,7 +96,7 @@ class TruckDigitalTwinManager : TruckManager {
             .where(DIGITAL_TWIN_MODEL, EQUALS, "'$TRUCK_MODEL_ID'")
             .build()
         return client.query(query, String::class.java)
-            .map { deserialize(it.toJsonObject().toString()) }
+            .map { deserialize(it.toJsonObject().toString(), null) }
     }
 
     /**
