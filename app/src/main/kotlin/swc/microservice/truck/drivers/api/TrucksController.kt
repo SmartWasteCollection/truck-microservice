@@ -1,5 +1,6 @@
 package swc.microservice.truck.drivers.api
 
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -18,6 +19,7 @@ import swc.microservice.truck.entities.events.AvailabilityUpdateEvent
 import swc.microservice.truck.entities.events.OccupiedVolumeUpdateEvent
 import swc.microservice.truck.entities.events.PositionUpdateEvent
 import swc.microservice.truck.usecases.CreateTruck
+import swc.microservice.truck.usecases.DeleteTruck
 import swc.microservice.truck.usecases.GetAvailableTrucks
 import swc.microservice.truck.usecases.GetTruck
 import swc.microservice.truck.usecases.TruckCount
@@ -39,14 +41,17 @@ class TrucksController(val manager: TruckManager = ManagerSupplier.get()) {
     fun getTruckCount(): Int = TruckCount().execute(manager)
 
     @PostMapping("/")
-    fun createTruck(@RequestBody body: String) = CreateTruck(deserialize(body, TruckNextId().execute(manager))).execute(manager)
+    fun createTruck(@RequestBody body: String): String = CreateTruck(deserialize(body, TruckNextId().execute(manager))).execute(manager)
 
     @PutMapping("/position")
-    fun updatePosition(@RequestBody body: String) = UpdateTruck(body.toJsonObject().getTruckId(), PositionUpdateEvent(body.toJsonObject().getPosition()))
+    fun updatePosition(@RequestBody body: String): Truck? = UpdateTruck(body.toJsonObject().getTruckId(), PositionUpdateEvent(body.toJsonObject().getPosition())).execute(manager)
 
     @PutMapping("/occupiedVolume")
-    fun updateOccupiedVolume(@RequestBody body: String) = UpdateTruck(body.toJsonObject().getTruckId(), OccupiedVolumeUpdateEvent(body.toJsonObject().getOccupiedVolume()))
+    fun updateOccupiedVolume(@RequestBody body: String): Truck? = UpdateTruck(body.toJsonObject().getTruckId(), OccupiedVolumeUpdateEvent(body.toJsonObject().getOccupiedVolume())).execute(manager)
 
     @PutMapping("/availability")
-    fun updateAvailability(@RequestBody body: String) = UpdateTruck(body.toJsonObject().getTruckId(), AvailabilityUpdateEvent(body.toJsonObject().getAvailability()))
+    fun updateAvailability(@RequestBody body: String): Truck? = UpdateTruck(body.toJsonObject().getTruckId(), AvailabilityUpdateEvent(body.toJsonObject().getAvailability())).execute(manager)
+
+    @DeleteMapping("/{id}")
+    fun deleteTruck(@PathVariable id: String): Truck? = DeleteTruck(id).execute(manager)
 }
