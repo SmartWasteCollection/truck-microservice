@@ -1,5 +1,6 @@
 package swc.microservice.truck.drivers
 
+import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
@@ -62,8 +63,9 @@ class TruckManagerTest : FreeSpec({
                 newTruck?.isInMission shouldBe NEW_MISSION
             }
             "should read digital twins" {
-                waitSomeTime()
-                manager.getAllTrucks().size shouldBeGreaterThan 0
+                shouldNotThrow<Exception> {
+                    manager.getAllTrucks()
+                }
             }
             "should delete a digital twin" {
                 manager.deleteTruck(id)
@@ -72,7 +74,3 @@ class TruckManagerTest : FreeSpec({
         }
     }
 })
-
-fun waitSomeTime() {
-    Thread.sleep(1_000)
-}
