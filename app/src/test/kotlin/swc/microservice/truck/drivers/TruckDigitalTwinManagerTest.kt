@@ -1,11 +1,9 @@
 package swc.microservice.truck.drivers
 
-import com.azure.digitaltwins.core.implementation.models.ErrorResponseException
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
-import swc.microservice.truck.drivers.Values.ERROR_STATUS_CODE
+import io.kotest.matchers.shouldNotBe
 import swc.microservice.truck.drivers.Values.MODEL
 import swc.microservice.truck.drivers.Values.NEW_MISSION
 import swc.microservice.truck.drivers.Values.NEW_POSITION
@@ -17,7 +15,6 @@ import swc.microservice.truck.entities.Volume
 
 object Values {
     const val MODEL = "Truck.json"
-    const val ERROR_STATUS_CODE = 404
 
     val NEW_POSITION = Position(100L, 100L)
     val NEW_VOLUME = Volume(100.0)
@@ -49,18 +46,20 @@ class TruckManagerTest : FreeSpec({
             }
             "should update a digital twin" {
                 val truck = manager.getTruck(id)
-                truck.position shouldBe Truck(id).position
-                truck.occupiedVolume shouldBe Truck(id).occupiedVolume
-                truck.isInMission shouldBe Truck(id).isInMission
+                truck shouldNotBe null
+                truck?.position shouldBe Truck(id).position
+                truck?.occupiedVolume shouldBe Truck(id).occupiedVolume
+                truck?.isInMission shouldBe Truck(id).isInMission
 
                 manager.updateTruckPosition(id, NEW_POSITION)
                 manager.updateTruckOccupiedVolume(id, NEW_VOLUME)
                 manager.updateTruckInMission(id, NEW_MISSION)
 
                 val newTruck = manager.getTruck(id)
-                newTruck.position shouldBe NEW_POSITION
-                newTruck.occupiedVolume shouldBe NEW_VOLUME
-                newTruck.isInMission shouldBe NEW_MISSION
+                newTruck shouldNotBe null
+                newTruck?.position shouldBe NEW_POSITION
+                newTruck?.occupiedVolume shouldBe NEW_VOLUME
+                newTruck?.isInMission shouldBe NEW_MISSION
             }
             "should read digital twins" {
                 waitSomeTime()
@@ -68,10 +67,7 @@ class TruckManagerTest : FreeSpec({
             }
             "should delete a digital twin" {
                 manager.deleteTruck(id)
-                val e = shouldThrow<ErrorResponseException> {
-                    manager.getTruck(id)
-                }
-                e.response.statusCode shouldBe ERROR_STATUS_CODE
+                manager.getTruck(id) shouldBe null
             }
         }
     }
