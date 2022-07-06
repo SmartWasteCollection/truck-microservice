@@ -1,4 +1,4 @@
-package swc.microservice.truck.drivers
+package swc.microservice.truck.drivers.digitaltwins
 
 import com.azure.digitaltwins.core.DigitalTwinsClient
 import com.azure.digitaltwins.core.DigitalTwinsClientBuilder
@@ -7,11 +7,11 @@ import swc.microservice.truck.adapters.TruckPresentation.Deserialization.deseria
 import swc.microservice.truck.adapters.TruckPresentation.Deserialization.toJsonObject
 import swc.microservice.truck.adapters.TruckPresentation.Serialization.patch
 import swc.microservice.truck.adapters.TruckPresentation.Serialization.toJsonString
-import swc.microservice.truck.drivers.DigitalTwinsValues.DIGITAL_TWIN_MODEL
-import swc.microservice.truck.drivers.DigitalTwinsValues.ENDPOINT
-import swc.microservice.truck.drivers.DigitalTwinsValues.TRUCK_COUNT
-import swc.microservice.truck.drivers.DigitalTwinsValues.TRUCK_MODEL_ID
-import swc.microservice.truck.drivers.QueryBuilder.QueryElements.EQUALS
+import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.DIGITAL_TWIN_MODEL
+import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.ENDPOINT
+import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.TRUCK_COUNT
+import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.TRUCK_MODEL_ID
+import swc.microservice.truck.drivers.digitaltwins.QueryBuilder.QueryElements.EQUALS
 import swc.microservice.truck.entities.Position
 import swc.microservice.truck.entities.Truck
 import swc.microservice.truck.entities.Volume

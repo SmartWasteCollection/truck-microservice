@@ -1,4 +1,4 @@
-package swc.microservice.truck.drivers
+package swc.microservice.truck.drivers.digitaltwins
 
 object DigitalTwinsValues {
     const val TRUCK_MODEL_ID: String = "dtmi:swc:Truck;1"
