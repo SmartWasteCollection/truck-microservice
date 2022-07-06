@@ -2,6 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.7.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
     id("org.jlleitschuh.gradle.ktlint-idea") version "10.3.0"
+    id("org.springframework.boot") version "2.7.1"
     jacoco
     application
 }
@@ -15,6 +16,7 @@ val kotestVersion: String by project
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.7.0")
     implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.2.3")
@@ -25,7 +27,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("swc.microservice.truck.AppKt")
+    mainClass.set("swc.microservice.truck.TruckMicroserviceKt")
 }
 
 jacoco {
