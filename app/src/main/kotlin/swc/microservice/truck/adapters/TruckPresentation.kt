@@ -65,8 +65,8 @@ object TruckPresentation {
          * Allows to convert a map of elements (represented by [Pair]s) into a Json String.
          */
         private fun <T> json(vararg pairs: Pair<String, T>): String = "{ ${
-            pairs.map { "\"${it.first}\": ${it.second}" }
-                .reduce { acc, s -> "$acc, $s" }
+        pairs.map { "\"${it.first}\": ${it.second}" }
+            .reduce { acc, s -> "$acc, $s" }
         } }"
     }
 
