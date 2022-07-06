@@ -39,40 +39,53 @@ class TruckDigitalTwinManager : TruckManager {
     /**
      * Creates a digital twin of the specified [Truck].
      */
-    override fun createTruck(truck: Truck) {
+    override fun createTruck(truck: Truck): String {
         client.createOrReplaceDigitalTwin(truck.truckId, truck.toJsonString(), String::class.java)
+        return truck.truckId
     }
 
     /**
      * Gets the digital twin of the [Truck] with the specified id.
      */
-    override fun getTruck(id: String): Truck =
+    override fun getTruck(id: String): Truck? = try {
         deserialize(client.getDigitalTwin(id, String::class.java))
+    } catch (e: Exception) {
+        println(e)
+        null
+    }
 
     /**
      * Deletes the digital twin of the [Truck] with the specified id.
      */
-    override fun deleteTruck(id: String) {
+    override fun deleteTruck(id: String): Truck? {
+        val truck = getTruck(id)
         client.deleteDigitalTwin(id)
+        return truck
     }
 
     /**
      * Updates the [Position] of the digital twin with the specified id.
      */
-    override fun updateTruckPosition(id: String, position: Position) =
+    override fun updateTruckPosition(id: String, position: Position): Truck? {
         client.updateDigitalTwin(id, patch(position))
+        return getTruck(id)
+    }
 
     /**
      * Updates the occupied [Volume] of the digital twin with the specified id.
      */
-    override fun updateTruckOccupiedVolume(id: String, volume: Volume) =
+    override fun updateTruckOccupiedVolume(id: String, volume: Volume): Truck? {
         client.updateDigitalTwin(id, patch(volume))
+        return getTruck(id)
+    }
 
     /**
      * Updates the occupied [Volume] of the digital twin with the specified id.
      */
-    override fun updateTruckInMission(id: String, inMission: Boolean) =
+    override fun updateTruckInMission(id: String, inMission: Boolean): Truck? {
         client.updateDigitalTwin(id, patch(inMission))
+        return getTruck(id)
+    }
 
     /**
      * Gets all the deployed [Truck]s in the digital twin instance.

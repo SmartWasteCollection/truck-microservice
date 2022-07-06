@@ -1,7 +1,7 @@
 package swc.microservice.truck.usecases
 
-class DeleteTruck(private val truckId: String) : TruckUseCase<Unit> {
-    override fun execute(manager: TruckManager) {
-        manager.deleteTruck(truckId)
-    }
+import swc.microservice.truck.entities.Truck
+
+class DeleteTruck(private val truckId: String) : TruckUseCase<Truck?> {
+    override fun execute(manager: TruckManager): Truck? = manager.deleteTruck(truckId)
 }
