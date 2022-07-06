@@ -3,17 +3,27 @@ package swc.microservice.truck.drivers.api
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import swc.microservice.truck.adapters.TruckPresentation.Deserialization.deserialize
+import swc.microservice.truck.adapters.TruckPresentation.Deserialization.getAvailability
+import swc.microservice.truck.adapters.TruckPresentation.Deserialization.getOccupiedVolume
+import swc.microservice.truck.adapters.TruckPresentation.Deserialization.getPosition
+import swc.microservice.truck.adapters.TruckPresentation.Deserialization.getTruckId
+import swc.microservice.truck.adapters.TruckPresentation.Deserialization.toJsonObject
 import swc.microservice.truck.entities.Truck
+import swc.microservice.truck.entities.events.AvailabilityUpdateEvent
+import swc.microservice.truck.entities.events.OccupiedVolumeUpdateEvent
+import swc.microservice.truck.entities.events.PositionUpdateEvent
 import swc.microservice.truck.usecases.CreateTruck
 import swc.microservice.truck.usecases.GetAvailableTrucks
 import swc.microservice.truck.usecases.GetTruck
 import swc.microservice.truck.usecases.TruckCount
 import swc.microservice.truck.usecases.TruckManager
 import swc.microservice.truck.usecases.TruckNextId
+import swc.microservice.truck.usecases.UpdateTruck
 
 @RestController
 @RequestMapping("/trucks")
@@ -30,4 +40,13 @@ class TrucksController(val manager: TruckManager = ManagerSupplier.get()) {
 
     @PostMapping("/")
     fun createTruck(@RequestBody body: String) = CreateTruck(deserialize(body, TruckNextId().execute(manager))).execute(manager)
+
+    @PutMapping("/position")
+    fun updatePosition(@RequestBody body: String) = UpdateTruck(body.toJsonObject().getTruckId(), PositionUpdateEvent(body.toJsonObject().getPosition()))
+
+    @PutMapping("/occupiedVolume")
+    fun updateOccupiedVolume(@RequestBody body: String) = UpdateTruck(body.toJsonObject().getTruckId(), OccupiedVolumeUpdateEvent(body.toJsonObject().getOccupiedVolume()))
+
+    @PutMapping("/availability")
+    fun updateAvailability(@RequestBody body: String) = UpdateTruck(body.toJsonObject().getTruckId(), AvailabilityUpdateEvent(body.toJsonObject().getAvailability()))
 }
