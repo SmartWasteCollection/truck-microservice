@@ -8,17 +8,17 @@ interface TruckManager {
 
     fun getTruckCount(): Int
 
-    fun createTruck(truck: Truck)
+    fun createTruck(truck: Truck): String
 
     fun getTruck(id: String): Truck?
 
-    fun deleteTruck(id: String)
+    fun deleteTruck(id: String): Truck?
 
-    fun updateTruckPosition(id: String, position: Position)
+    fun updateTruckPosition(id: String, position: Position): Truck?
 
-    fun updateTruckOccupiedVolume(id: String, volume: Volume)
+    fun updateTruckOccupiedVolume(id: String, volume: Volume): Truck?
 
-    fun updateTruckInMission(id: String, inMission: Boolean)
+    fun updateTruckInMission(id: String, inMission: Boolean): Truck?
 
     fun getAllTrucks(): List<Truck>
 }

@@ -27,41 +27,47 @@ class TruckUseCasesTest : FreeSpec({
     val manager: TruckManager = object : TruckManager {
         override fun getTruckCount(): Int = trucks.size
 
-        override fun createTruck(truck: Truck) {
+        override fun createTruck(truck: Truck): String {
             trucks = trucks + truck
+            return truck.truckId
         }
 
         override fun getTruck(id: String): Truck? = trucks.find { it.truckId == id }
 
-        override fun deleteTruck(id: String) {
+        override fun deleteTruck(id: String): Truck? {
+            val deleted = getTruck(id)
             trucks = trucks.filter { it.truckId != id }
+            return deleted
         }
 
-        override fun updateTruckPosition(id: String, position: Position) {
+        override fun updateTruckPosition(id: String, position: Position): Truck? {
             trucks = trucks.map {
                 when (it.truckId) {
                     id -> Truck(id, position, it.occupiedVolume, it.capacity, it.isInMission)
                     else -> it
                 }
             }
+            return getTruck(id)
         }
 
-        override fun updateTruckOccupiedVolume(id: String, volume: Volume) {
+        override fun updateTruckOccupiedVolume(id: String, volume: Volume): Truck? {
             trucks = trucks.map {
                 when (it.truckId) {
                     id -> Truck(id, it.position, volume, it.capacity, it.isInMission)
                     else -> it
                 }
             }
+            return getTruck(id)
         }
 
-        override fun updateTruckInMission(id: String, inMission: Boolean) {
+        override fun updateTruckInMission(id: String, inMission: Boolean): Truck? {
             trucks = trucks.map {
                 when (it.truckId) {
                     id -> Truck(id, it.position, it.occupiedVolume, it.capacity, inMission)
                     else -> it
                 }
             }
+            return getTruck(id)
         }
 
         override fun getAllTrucks(): List<Truck> = trucks
