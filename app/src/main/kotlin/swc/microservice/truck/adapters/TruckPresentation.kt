@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonSyntaxException
 import swc.microservice.truck.adapters.TruckPresentation.Values.CAPACITY
+import swc.microservice.truck.adapters.TruckPresentation.Values.DIGITAL_TWIN_ID
 import swc.microservice.truck.adapters.TruckPresentation.Values.IN_MISSION
 import swc.microservice.truck.adapters.TruckPresentation.Values.LATITUDE
 import swc.microservice.truck.adapters.TruckPresentation.Values.LONGITUDE
@@ -26,7 +27,8 @@ object TruckPresentation {
         const val METADATA = "\$metadata"
         const val MODEL = "\$model"
         const val TRUCK_MODEL = "dtmi:swc:Truck;1"
-        const val TRUCK_ID = "\$dtId"
+        const val DIGITAL_TWIN_ID = "\$dtId"
+        const val TRUCK_ID = "truckId"
         const val POSITION = "position"
         const val LATITUDE = "latitude"
         const val LONGITUDE = "longitude"
@@ -63,8 +65,8 @@ object TruckPresentation {
          * Allows to convert a map of elements (represented by [Pair]s) into a Json String.
          */
         private fun <T> json(vararg pairs: Pair<String, T>): String = "{ ${
-        pairs.map { "\"${it.first}\": ${it.second}" }
-            .reduce { acc, s -> "$acc, $s" }
+            pairs.map { "\"${it.first}\": ${it.second}" }
+                .reduce { acc, s -> "$acc, $s" }
         } }"
     }
 
@@ -76,7 +78,7 @@ object TruckPresentation {
         fun deserialize(json: String, truckId: String?): Truck {
             val obj = json.toJsonObject()
             return Truck(
-                truckId = truckId ?: obj[TRUCK_ID].asString,
+                truckId = truckId ?: obj[DIGITAL_TWIN_ID].asString,
                 position = Position(
                     obj[POSITION].toJsonObject().get(LATITUDE).asLong,
                     obj[POSITION].toJsonObject().get(LONGITUDE).asLong
@@ -86,6 +88,37 @@ object TruckPresentation {
                 isInMission = obj[IN_MISSION].asBoolean
             )
         }
+
+        /**
+         * Gets a truck id from a [JsonObject].
+         */
+        fun JsonObject.getTruckId(): String = this[TRUCK_ID].asString
+
+        /**
+         * Gets a [Position] from a [JsonObject].
+         */
+        fun JsonObject.getPosition(): Position {
+            val position = this[POSITION].toJsonObject()
+            return Position(
+                latitude = position[LATITUDE].asLong,
+                longitude = position[LONGITUDE].asLong
+            )
+        }
+
+        /**
+         * Gets a occupied[Volume] from a [JsonObject].
+         */
+        fun JsonObject.getOccupiedVolume(): Volume {
+            val volume = this[OCCUPIED_VOLUME].toJsonObject()
+            return Volume(
+                value = volume[VALUE].asDouble
+            )
+        }
+
+        /**
+         * Gets an availability status from a [JsonObject].
+         */
+        fun JsonObject.getAvailability(): Boolean = this[IN_MISSION].asBoolean
 
         /**
          * Converts [Any]thing into a [JsonObject]. Throws a [JsonSyntaxException] if the parsed object is not a valid json.
