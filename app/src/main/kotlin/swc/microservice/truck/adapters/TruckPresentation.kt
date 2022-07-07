@@ -75,7 +75,7 @@ object TruckPresentation {
         /**
          * Deserializes a Json into a Truck object.
          */
-        fun deserialize(json: String, truckId: String?): Truck {
+        fun deserialize(json: String, truckId: String? = null): Truck {
             val obj = json.toJsonObject()
             return Truck(
                 truckId = truckId ?: obj[DIGITAL_TWIN_ID].asString,
