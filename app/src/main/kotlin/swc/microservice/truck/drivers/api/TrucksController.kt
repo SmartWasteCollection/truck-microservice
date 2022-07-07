@@ -21,6 +21,7 @@ import swc.microservice.truck.entities.events.PositionUpdateEvent
 import swc.microservice.truck.usecases.CreateTruck
 import swc.microservice.truck.usecases.DeleteTruck
 import swc.microservice.truck.usecases.GetAvailableTrucks
+import swc.microservice.truck.usecases.GetInMissionTrucks
 import swc.microservice.truck.usecases.GetTruck
 import swc.microservice.truck.usecases.TruckCount
 import swc.microservice.truck.usecases.TruckManager
@@ -36,6 +37,9 @@ class TrucksController(val manager: TruckManager = ManagerSupplier.get()) {
 
     @GetMapping("/available")
     fun getAvailableTrucks(): List<Truck> = GetAvailableTrucks().execute(manager)
+
+    @GetMapping("/inMission")
+    fun getInMissionTrucks(): List<Truck> = GetInMissionTrucks().execute(manager)
 
     @GetMapping("/count")
     fun getTruckCount(): Int = TruckCount().execute(manager)
