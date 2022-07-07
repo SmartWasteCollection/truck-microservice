@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine
+FROM openjdk:19-alpine
 COPY ./ /truck-microservice/
 WORKDIR /truck-microservice/
 EXPOSE 8080
