@@ -1,3 +1,15 @@
+# [0.2.0](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.1.0...v0.2.0) (2022-07-08)
+
+
+### Bug Fixes
+
+* add get in mission trucks use case ([7938b0d](https://github.com/SmartWasteCollection/truck-microservice/commit/7938b0d8b9f7b8e4d3571a198ce00874bcccb7c9))
+
+
+### Features
+
+* web service ([10635b1](https://github.com/SmartWasteCollection/truck-microservice/commit/10635b13c366ce532b3b26a1e769c417be4b4059))
+
 # [0.1.0](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.0.1...v0.1.0) (2022-07-07)
 
 
