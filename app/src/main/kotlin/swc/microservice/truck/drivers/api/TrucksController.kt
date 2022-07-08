@@ -1,5 +1,6 @@
 package swc.microservice.truck.drivers.api
 
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -29,6 +30,7 @@ import swc.microservice.truck.usecases.TruckNextId
 import swc.microservice.truck.usecases.UpdateTruck
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/trucks")
 class TrucksController(val manager: TruckManager = ManagerSupplier.get()) {
 

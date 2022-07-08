@@ -95,7 +95,7 @@ class TruckUseCasesTest : FreeSpec({
                 TruckNextId().execute(manager) shouldBe id4
             }
             "update a position" {
-                val newPosition = Position(1L, 1L)
+                val newPosition = Position(1.0, 1.0)
                 UpdateTruck(id1, PositionUpdateEvent(newPosition)).execute(manager)
                 GetTruck(id1).execute(manager)?.position shouldBe newPosition
             }

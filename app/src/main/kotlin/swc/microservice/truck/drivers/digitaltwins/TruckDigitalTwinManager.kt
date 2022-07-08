@@ -98,10 +98,4 @@ class TruckDigitalTwinManager : TruckManager {
         return client.query(query, String::class.java)
             .map { deserialize(it.toJsonObject().toString()) }
     }
-
-    /**
-     * Gets the digital twin model of a [Truck].
-     */
-    fun getTruckDigitalTwinModel(): String =
-        client.getModel(TRUCK_MODEL_ID).dtdlModel
 }

@@ -80,8 +80,8 @@ object TruckPresentation {
             return Truck(
                 truckId = truckId ?: obj[DIGITAL_TWIN_ID].asString,
                 position = Position(
-                    obj[POSITION].toJsonObject().get(LATITUDE).asLong,
-                    obj[POSITION].toJsonObject().get(LONGITUDE).asLong
+                    obj[POSITION].toJsonObject().get(LATITUDE).asDouble,
+                    obj[POSITION].toJsonObject().get(LONGITUDE).asDouble
                 ),
                 occupiedVolume = Volume(obj[OCCUPIED_VOLUME].toJsonObject().get(VALUE).asDouble),
                 capacity = obj[CAPACITY].asDouble,
@@ -100,8 +100,8 @@ object TruckPresentation {
         fun JsonObject.getPosition(): Position {
             val position = this[POSITION].toJsonObject()
             return Position(
-                latitude = position[LATITUDE].asLong,
-                longitude = position[LONGITUDE].asLong
+                latitude = position[LATITUDE].asDouble,
+                longitude = position[LONGITUDE].asDouble
             )
         }
 
