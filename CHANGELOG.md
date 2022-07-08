@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.0...v0.2.1) (2022-07-08)
+
+
+### Bug Fixes
+
+* cors problems and server port ([c93360d](https://github.com/SmartWasteCollection/truck-microservice/commit/c93360d9a91a9d6f43b32b6b4c449816c5e40c42))
+* position coordinates are double ([3112e67](https://github.com/SmartWasteCollection/truck-microservice/commit/3112e67beb6ca7d422add3e1cc1fbf46423b1e6b))
+* set server port from environment variable ([6ddad55](https://github.com/SmartWasteCollection/truck-microservice/commit/6ddad55556fbfc68c3a3ba95c30631ff5e78d543))
+
 # [0.2.0](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.1.0...v0.2.0) (2022-07-08)
 
 
