@@ -2,7 +2,6 @@ package swc.microservice.truck.drivers
 
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.core.spec.style.FreeSpec
-import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import swc.microservice.truck.drivers.Values.NEW_MISSION
@@ -27,9 +26,6 @@ class TruckManagerTest : FreeSpec({
 
     "The truck manager" - {
         "when communicating with Azure Digital Twins" - {
-            "should count correctly" {
-                manager.get() shouldBeGreaterThan -1
-            }
             "should create a digital twin" {
                 val truck = Truck(id)
                 manager.createTruck(truck)
