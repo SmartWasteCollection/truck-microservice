@@ -6,8 +6,6 @@ import swc.microservice.truck.entities.Volume
 
 interface TruckManager {
 
-    fun getTruckCount(): Int
-
     fun createTruck(truck: Truck): String
 
     fun getTruck(id: String): Truck?

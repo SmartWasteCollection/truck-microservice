@@ -12,21 +12,17 @@ import swc.microservice.truck.entities.events.PositionUpdateEvent
 import swc.microservice.truck.usecases.Values.id1
 import swc.microservice.truck.usecases.Values.id2
 import swc.microservice.truck.usecases.Values.id3
-import swc.microservice.truck.usecases.Values.id4
 
 object Values {
     const val id1 = "Truck0"
     const val id2 = "Truck1"
     const val id3 = "Truck2"
-    const val id4 = "Truck3"
 }
 
 class TruckUseCasesTest : FreeSpec({
 
     var trucks: List<Truck> = listOf()
     val manager: TruckManager = object : TruckManager {
-        override fun getTruckCount(): Int = trucks.size
-
         override fun createTruck(truck: Truck): String {
             trucks = trucks + truck
             return truck.truckId
@@ -84,15 +80,12 @@ class TruckUseCasesTest : FreeSpec({
                 )
                 useCases.forEach { it.execute(manager) }
 
-                TruckCount().execute(manager) shouldBe 3
+                GetAllTrucks().execute(manager).size shouldBe 3
             }
             "get trucks" {
                 GetTruck(id1).execute(manager) shouldNotBe null
                 GetTruck(id2).execute(manager) shouldNotBe null
                 GetTruck(id3).execute(manager) shouldNotBe null
-            }
-            "get the next available id" {
-                TruckNextId().execute(manager) shouldBe id4
             }
             "update a position" {
                 val newPosition = Position(1.0, 1.0)
@@ -111,9 +104,9 @@ class TruckUseCasesTest : FreeSpec({
                 GetInMissionTrucks().execute(manager).size shouldBe 1
             }
             "delete a truck" {
-                val truckCount = TruckCount().execute(manager)
+                val truckCount = GetAllTrucks().execute(manager).size
                 DeleteTruck(id1).execute(manager)
-                TruckCount().execute(manager) shouldBe (truckCount - 1)
+                GetAllTrucks().execute(manager).size shouldBe (truckCount - 1)
             }
         }
     }
