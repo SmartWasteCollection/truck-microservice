@@ -21,21 +21,24 @@ import swc.microservice.truck.entities.events.OccupiedVolumeUpdateEvent
 import swc.microservice.truck.entities.events.PositionUpdateEvent
 import swc.microservice.truck.usecases.CreateTruck
 import swc.microservice.truck.usecases.DeleteTruck
+import swc.microservice.truck.usecases.GetAllTrucks
 import swc.microservice.truck.usecases.GetAvailableTrucks
 import swc.microservice.truck.usecases.GetInMissionTrucks
 import swc.microservice.truck.usecases.GetTruck
-import swc.microservice.truck.usecases.TruckCount
 import swc.microservice.truck.usecases.TruckManager
-import swc.microservice.truck.usecases.TruckNextId
 import swc.microservice.truck.usecases.UpdateTruck
+import java.util.UUID
 
 @RestController
-@CrossOrigin()
+@CrossOrigin
 @RequestMapping("/trucks")
 class TrucksController(val manager: TruckManager = ManagerSupplier.get()) {
 
     @GetMapping("/{id}")
     fun getTruck(@PathVariable id: String): Truck? = GetTruck(id).execute(manager)
+
+    @GetMapping("/")
+    fun getAllTrucks(): List<Truck> = GetAllTrucks().execute(manager)
 
     @GetMapping("/available")
     fun getAvailableTrucks(): List<Truck> = GetAvailableTrucks().execute(manager)
@@ -43,11 +46,8 @@ class TrucksController(val manager: TruckManager = ManagerSupplier.get()) {
     @GetMapping("/inMission")
     fun getInMissionTrucks(): List<Truck> = GetInMissionTrucks().execute(manager)
 
-    @GetMapping("/count")
-    fun getTruckCount(): Int = TruckCount().execute(manager)
-
     @PostMapping("/")
-    fun createTruck(@RequestBody body: String): String = CreateTruck(deserialize(body, TruckNextId().execute(manager))).execute(manager)
+    fun createTruck(@RequestBody body: String): String = CreateTruck(deserialize(body, "Truck-${UUID.randomUUID()}")).execute(manager)
 
     @PutMapping("/position")
     fun updatePosition(@RequestBody body: String): Truck? = UpdateTruck(body.toJsonObject().getTruckId(), PositionUpdateEvent(body.toJsonObject().getPosition())).execute(manager)

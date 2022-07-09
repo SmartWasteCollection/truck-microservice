@@ -28,7 +28,7 @@ class TruckManagerTest : FreeSpec({
     "The truck manager" - {
         "when communicating with Azure Digital Twins" - {
             "should count correctly" {
-                manager.getTruckCount() shouldBeGreaterThan -1
+                manager.get() shouldBeGreaterThan -1
             }
             "should create a digital twin" {
                 val truck = Truck(id)
