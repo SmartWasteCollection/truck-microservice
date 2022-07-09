@@ -9,7 +9,6 @@ import swc.microservice.truck.adapters.TruckPresentation.Serialization.patch
 import swc.microservice.truck.adapters.TruckPresentation.Serialization.toJsonString
 import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.DIGITAL_TWIN_MODEL
 import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.ENDPOINT
-import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.TRUCK_COUNT
 import swc.microservice.truck.drivers.digitaltwins.DigitalTwinsValues.TRUCK_MODEL_ID
 import swc.microservice.truck.drivers.digitaltwins.QueryBuilder.QueryElements.EQUALS
 import swc.microservice.truck.entities.Position
@@ -23,18 +22,6 @@ class TruckDigitalTwinManager : TruckManager {
         .credential(AzureCliCredentialBuilder().build())
         .endpoint(ENDPOINT)
         .buildClient()
-
-    /**
-     * Counts how many [Truck] digital twin are deployed.
-     */
-    override fun getTruckCount(): Int {
-        val query = QueryBuilder()
-            .selectCount()
-            .where(DIGITAL_TWIN_MODEL, EQUALS, "'$TRUCK_MODEL_ID'")
-            .build()
-        return client.query(query, String::class.java)
-            .map { it.toString().toJsonObject() }[0][TRUCK_COUNT].asInt
-    }
 
     /**
      * Creates a digital twin of the specified [Truck].
