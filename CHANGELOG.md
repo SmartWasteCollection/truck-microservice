@@ -1,3 +1,11 @@
+## [0.2.2](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.1...v0.2.2) (2022-07-09)
+
+
+### Bug Fixes
+
+* add get all trucks use case ([ea3fabd](https://github.com/SmartWasteCollection/truck-microservice/commit/ea3fabdc0194869a35020dffc016cf899afe2f5a))
+* add get all trucks usecase ([6ff0d6f](https://github.com/SmartWasteCollection/truck-microservice/commit/6ff0d6fd10aa2c757ff10695a1703cb8af978c65))
+
 ## [0.2.1](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.0...v0.2.1) (2022-07-08)
 
 
