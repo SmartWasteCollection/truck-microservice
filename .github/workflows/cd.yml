@@ -15,7 +15,7 @@ jobs:
   build-and-test:
     uses: ./.github/workflows/ci.yml
     secrets: inherit
-  delivery:
+  release:
     needs:
       - build-and-test
     runs-on: ubuntu-latest
@@ -29,6 +29,11 @@ jobs:
         uses: anitvam/conventionalcommit-semantic-releasing@v0.3.6
         with:
           token: ${{ secrets.GH_TOKEN }}
+  deploy:
+    needs:
+      - release
+    runs-on: ubuntu-latest
+    steps:  
       - name: Get tag
         id: getTag
         run: echo "::set-output name=tagVersion::$(git describe --tags --abbrev=0)"
@@ -40,5 +45,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Docker Image
         run: |
-          docker build . --tag ghcr.io/smartwastecollection/truck-microservice:${{ steps.getTag.outputs.tagVersion }}
+          docker build . --build-arg service=${{ secrets.CONTAINER_AZURE_SERVICE_PRINCIPAL_NAME }} --build-arg secret=${{ secrets.CONTAINER_AZURE_SECRET }} --build-arg tenant=${{ secrets.CONTAINER_AZURE_TENANT }} --tag ghcr.io/smartwastecollection/truck-microservice:${{ steps.getTag.outputs.tagVersion }}
           docker push ghcr.io/smartwastecollection/truck-microservice:${{ steps.getTag.outputs.tagVersion }}
