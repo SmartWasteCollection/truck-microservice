@@ -1,3 +1,10 @@
+## [0.2.3](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.2...v0.2.3) (2022-07-10)
+
+
+### Bug Fixes
+
+* **ci:** pass azure credentials to docker container ([4dcf092](https://github.com/SmartWasteCollection/truck-microservice/commit/4dcf09260fc0cb913e2f8915ce51653615c394a8))
+
 ## [0.2.2](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.1...v0.2.2) (2022-07-09)
 
 
