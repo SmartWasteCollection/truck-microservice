@@ -1,3 +1,10 @@
+## [0.2.4](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.3...v0.2.4) (2022-07-10)
+
+
+### Bug Fixes
+
+* **ci:** checkout before container deployment ([67abc0d](https://github.com/SmartWasteCollection/truck-microservice/commit/67abc0d244c062736c38992464a94bda64d9edf5))
+
 ## [0.2.3](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.2...v0.2.3) (2022-07-10)
 
 
