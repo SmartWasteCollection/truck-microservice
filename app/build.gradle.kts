@@ -19,7 +19,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:2.7.1")
     implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.google.guava:guava:31.1-jre")
-    implementation("com.azure:azure-digitaltwins-core:1.2.4")
+    implementation("com.azure:azure-digitaltwins-core:1.3.0")
     implementation("com.azure:azure-identity:1.5.2")
     implementation("io.github.cdimascio:dotenv-kotlin:6.3.1")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
