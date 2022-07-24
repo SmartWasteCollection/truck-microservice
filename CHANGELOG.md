@@ -1,3 +1,10 @@
+## [0.2.5](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.4...v0.2.5) (2022-07-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.azure:azure-identity to v1.5.3 ([b29a5a3](https://github.com/SmartWasteCollection/truck-microservice/commit/b29a5a3890caad6ce39cf991b88402d7727184d4))
+
 ## [0.2.4](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.3...v0.2.4) (2022-07-10)
 
 
