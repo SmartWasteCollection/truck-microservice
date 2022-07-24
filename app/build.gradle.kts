@@ -20,7 +20,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.3.0")
-    implementation("com.azure:azure-identity:1.5.2")
+    implementation("com.azure:azure-identity:1.5.3")
     implementation("io.github.cdimascio:dotenv-kotlin:6.3.1")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
