@@ -1,3 +1,10 @@
+## [0.2.6](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.5...v0.2.6) (2022-07-28)
+
+
+### Bug Fixes
+
+* **deps:** update kotestversion to v5.4.1 ([22b4bc8](https://github.com/SmartWasteCollection/truck-microservice/commit/22b4bc8e7cfc66824790aced08739b89427f1e65))
+
 ## [0.2.5](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.4...v0.2.5) (2022-07-24)
 
 
