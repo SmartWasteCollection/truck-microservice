@@ -1,3 +1,10 @@
+## [0.2.7](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.6...v0.2.7) (2022-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.google.code.gson:gson to v2.9.1 ([7c02c3e](https://github.com/SmartWasteCollection/truck-microservice/commit/7c02c3e859ce818f8b42fe6f730906dd0047c107))
+
 ## [0.2.6](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.5...v0.2.6) (2022-07-28)
 
 
