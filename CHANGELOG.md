@@ -1,3 +1,10 @@
+## [0.2.11](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.10...v0.2.11) (2022-09-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.azure:azure-digitaltwins-core to v1.3.2 ([fbcb4e5](https://github.com/SmartWasteCollection/truck-microservice/commit/fbcb4e56a0571cdab2740171a86181ba92ce1b6d))
+
 ## [0.2.10](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.9...v0.2.10) (2022-08-18)
 
 
