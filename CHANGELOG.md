@@ -1,3 +1,10 @@
+## [0.2.12](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.11...v0.2.12) (2022-09-22)
+
+
+### Bug Fixes
+
+* **deps:** update spring boot to v2.7.4 ([a81fb05](https://github.com/SmartWasteCollection/truck-microservice/commit/a81fb05b29dced19c5fcb01ce445c80a4f9be5ee))
+
 ## [0.2.11](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.10...v0.2.11) (2022-09-07)
 
 
