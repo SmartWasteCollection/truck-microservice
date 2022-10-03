@@ -1,3 +1,10 @@
+## [0.2.13](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.12...v0.2.13) (2022-10-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency io.kotest:kotest-runner-junit5 to v5.5.0 ([3dfd9c3](https://github.com/SmartWasteCollection/truck-microservice/commit/3dfd9c3b65f5051933379bdce914d009cab497bb))
+
 ## [0.2.12](https://github.com/SmartWasteCollection/truck-microservice/compare/v0.2.11...v0.2.12) (2022-09-22)
 
 
