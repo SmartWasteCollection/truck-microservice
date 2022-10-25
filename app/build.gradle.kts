@@ -17,7 +17,7 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.boot:spring-boot-starter-web:2.7.5")
-    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("com.google.code.gson:gson:2.10")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.3.3")
     implementation("com.azure:azure-identity:1.5.3")
