@@ -1,7 +1,7 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.8.10"
     id("org.jlleitschuh.gradle.ktlint") version "11.2.0"
-    id("org.jlleitschuh.gradle.ktlint-idea") version "11.0.0"
+    id("org.jlleitschuh.gradle.ktlint-idea") version "11.2.0"
     id("org.springframework.boot") version "2.7.8"
     jacoco
     application
