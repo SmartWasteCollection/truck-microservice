@@ -26,7 +26,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
       - name: Semantic Versioning
-        uses: anitvam/conventionalcommit-semantic-releasing@v0.5.5
+        uses: anitvam/conventionalcommit-semantic-releasing@v0.5.7
         with:
           token: ${{ secrets.GH_TOKEN }}
   deploy:
