@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.8.20"
+    id("org.jetbrains.kotlin.jvm") version "1.8.21"
     id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
     id("org.jlleitschuh.gradle.ktlint-idea") version "11.3.1"
     id("org.springframework.boot") version "2.7.11"
