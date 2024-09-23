@@ -18,7 +18,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.boot:spring-boot-starter-web:2.7.12")
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation("com.google.guava:guava:32.0.1-jre")
+    implementation("com.google.guava:guava:33.3.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.3.9")
     implementation("com.azure:azure-identity:1.5.3")
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
