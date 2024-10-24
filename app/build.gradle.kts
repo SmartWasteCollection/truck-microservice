@@ -2,7 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.8.22"
     id("org.jlleitschuh.gradle.ktlint") version "11.4.0"
     id("org.jlleitschuh.gradle.ktlint-idea") version "11.4.0"
-    id("org.springframework.boot") version "2.7.12"
+    id("org.springframework.boot") version "3.3.5"
     jacoco
     application
 }
@@ -16,7 +16,7 @@ val kotestVersion: String by project
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.springframework.boot:spring-boot-starter-web:2.7.12")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.3.5")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.google.guava:guava:32.0.1-jre")
     implementation("com.azure:azure-digitaltwins-core:1.3.9")
